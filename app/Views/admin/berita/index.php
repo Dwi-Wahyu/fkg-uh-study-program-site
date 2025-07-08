@@ -1,8 +1,6 @@
 <?= $this->extend('layout/admin') ?>
 
 <?= $this->section('content') ?>
-<h1>Berita</h1>
-<p>Selamat datang di panel admin.</p>
 
 <a
     name=""

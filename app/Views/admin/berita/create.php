@@ -2,27 +2,37 @@
 
 <?= $this->section('content') ?>
 
-<h2>Tambah Berita</h2>
-
 <form action="/admin/berita/store" method="post" enctype="multipart/form-data">
     <?= csrf_field() ?>
 
-    <div class="mb-3">
-        <label for="judul" class="form-label">Judul Berita</label>
-        <input type="text" class="form-control" id="judul" name="judul" required>
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="judul" class="form-label">Judul Berita</label>
+                <input type="text" class="form-control" id="judul" name="judul" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="gambar" class="form-label">Thumbnail</label>
+                <input class="form-control" type="file" id="gambar" name="gambar" accept="image/*">
+            </div>
+
+            <div class="vignette mb-3">
+                <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                    <label for="detail" class="mb-1">Detail Berita * :</label>
+                    <textarea class="editor" name="detail" id="detail"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label for="konten" class="form-label">Konten</label>
-        <textarea class="form-control" id="konten" name="konten" rows="5" required></textarea>
-    </div>
+    <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js') ?>"></script>
 
-    <div class="mb-3">
-        <label for="gambar" class="form-label">Gambar Berita</label>
-        <input class="form-control" type="file" id="gambar" name="gambar" accept="image/*">
-    </div>
+    <script src="<?= base_url('assets/vendor/tinymce/init.js') ?>"></script>
 
-    <button type="submit" class="btn btn-primary">Simpan</button>
+
 </form>
 
 <?= $this->endSection() ?>

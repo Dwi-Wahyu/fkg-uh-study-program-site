@@ -1,0 +1,46 @@
+/* Styling untuk breadcrumb cerah */
+.breadcrumb-custom {
+  padding: 0.75rem 1rem; /* Menambahkan padding agar lebih terlihat */
+  margin-bottom: 1.5rem;
+  background-color: #e0f2f7; /* Warna latar belakang sangat cerah (biru muda) */
+  border-radius: 0.375rem; /* Sudut membulat */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Mengizinkan wrapping pada layar kecil */
+  border: 1px solid rgba(0, 0, 0, 0.075); /* Tambahkan border tipis untuk definisi */
+}
+
+.breadcrumb-custom .breadcrumb-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-custom .breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  content: "/"; /* Separator */
+  color: #6c757d; /* Warna separator tetap netral agar mudah dibaca */
+}
+
+.breadcrumb-custom .breadcrumb-item.active {
+  color: #0056b3; /* Warna teks item aktif yang lebih gelap dari link, tapi tetap jelas */
+  font-weight: 600; /* Sedikit lebih tebal untuk item aktif */
+}
+
+.breadcrumb-custom .breadcrumb-item a {
+  color: #007bff; /* Warna link biru cerah dari Bootstrap */
+  text-decoration: none;
+}
+
+.breadcrumb-custom .breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+/* Styling untuk Judul Halaman */
+.page-header {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #343a40; /* Menggunakan warna gelap standar agar kontras dengan latar cerah */
+}

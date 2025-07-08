@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class BeritaController extends BaseController
+class Berita extends BaseController
 {
     public function index()
     {
