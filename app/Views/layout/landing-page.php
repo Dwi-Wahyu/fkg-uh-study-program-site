@@ -10,8 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?= base_url('assets/css/landing-page/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/landing-page/hero.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/topbar.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
 
-    <link rel="stylesheet" href="<?= base_url('assets/css/landing-page.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
 </head>
 
@@ -21,6 +24,7 @@
     </div>
 
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="/assets/js/topbar.js"></script>
 </body>
 
 </html>

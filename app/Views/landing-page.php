@@ -1,9 +1,22 @@
 <?= $this->extend('layout/landing-page') ?>
 
-<div class="hero">
-    <h1>PPDGS Bedah Mulut dan Maksilofasial</h1>
-</div>
-
 <?= $this->section('content') ?>
-<h1>halo</h1>
+<?= view('partials/hero') ?>
+
+<?= view('partials/sambutan-ketua-program-studi') ?>
+
+<?= view('partials/visi-misi-tujuan') ?>
+
+<?= view('partials/info') ?>
+
+<?= view('partials/pimpinan-fakultas') ?>
+
+<?= view('partials/kemitraan-sejarah') ?>
+
+<?= view('partials/berita') ?>
+
+<?= view('partials/layanan-mahasiswa') ?>
+
+<?= view('partials/footer') ?>
+
 <?= $this->endSection() ?>

@@ -24,7 +24,7 @@ class Auth extends BaseController
             return redirect()->to('/admin/dashboard'); // <-- Langsung arahkan ke admin dashboard
         }
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             log_message('debug', 'Login: Form disubmit.'); // <--- Tambahkan ini
 
             $rules = [

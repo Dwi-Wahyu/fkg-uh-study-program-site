@@ -1,0 +1,20 @@
+.footer {
+  background-color: #0f0f0f;
+  color: white;
+}
+
+.footer img {
+  width: 22rem;
+}
+
+.footer a {
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: white;
+}
