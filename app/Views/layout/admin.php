@@ -23,7 +23,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel=" stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/admin.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/breadcrumb.css') ?>">
 </head>
@@ -83,6 +85,39 @@
                     </div>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/admin/kurikulum" class="nav-link <?= $segment2 === 'kurikulum' ? 'active' : '' ?>">
+                    <svg class="me-1" style="margin-bottom: 2px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                        <rect width="32" height="32" fill="none" />
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7S9 1 2 6v22c7-5 14 0 14 0s7-5 14 0V6c-7-5-14 1-14 1m0 0v21" />
+                    </svg>
+
+                    Kurikulum
+                    <div class="corner-right-top">
+
+                    </div>
+                    <div class="corner-right-bottom">
+
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/survei" class="nav-link <?= $segment2 === 'survei' ? 'active' : '' ?>">
+                    <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 26 26">
+                        <rect width="26" height="26" fill="none" />
+                        <path fill="currentColor" d="M8.813 0A1 1 0 0 0 8 1v1H4.406C3.606 2 3 2.606 3 3.406V24.5c0 .9.606 1.5 1.406 1.5H21.5c.8 0 1.406-.606 1.406-1.406V3.406c.1-.8-.512-1.406-1.312-1.406H18V1a1 1 0 0 0-1-1H9a1 1 0 0 0-.094 0a1 1 0 0 0-.094 0zM10 2h6v2h-6zM5 4h3v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4h3v20H5zm2 5v4h4V9zm1 1h2v2H8zm5 0v2h6v-2zm-6 5v4h4v-4zm6 1v2h6v-2z" />
+                    </svg>
+
+                    Survei
+                    <div class="corner-right-top">
+
+                    </div>
+                    <div class="corner-right-bottom">
+
+                    </div>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="/admin/profil-lulusan" class="nav-link <?= $segment2 === 'profil-lulusan' ? 'active' : '' ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">

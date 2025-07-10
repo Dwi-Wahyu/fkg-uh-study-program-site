@@ -6,10 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="main-news-card">
-                <h4>Sejarah</h4>
+                <h4 class="mb-4"><?= esc($title) ?></h4>
 
                 <div class="news-detail-content">
-                    <?= $sejarah['content'] ?? '' ?>
+                    <?= $sejarah_content ?>
                 </div>
             </div>
         </div>

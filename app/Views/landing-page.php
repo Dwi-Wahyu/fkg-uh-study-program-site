@@ -3,9 +3,11 @@
 <?= $this->section('content') ?>
 <?= view('partials/hero') ?>
 
-<?= view('partials/sambutan-ketua-program-studi') ?>
+<?= view('partials/language-toggle') ?>
 
-<?= view('partials/visi-misi-tujuan') ?>
+<?= view('partials/sambutan-ketua-program-studi', ['ketuaProdi' => $ketuaProdi, 'currentLocale' => $currentLocale]) ?>
+
+<?= view('partials/visi-misi-tujuan', ['visiMisiTujuan' => $visiMisiTujuan, 'currentLocale' => $currentLocale]) ?>
 
 <?= view('partials/info') ?>
 
@@ -18,5 +20,6 @@
 <?= view('partials/layanan-mahasiswa') ?>
 
 <?= view('partials/footer') ?>
+
 
 <?= $this->endSection() ?>

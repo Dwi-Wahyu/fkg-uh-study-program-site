@@ -11,7 +11,7 @@
                 <li><a href="/student-guide">Student Guide</a></li>
                 <li><a href="/sarana-dan-prasarana">Sarana dan Prasarana</a></li>
                 <li><a href="/student-activity">Student Activity</a></li>
-                <li><a href="/survey">Survey</a></li>
+                <li><a href="/survei">Survei</a></li>
                 <li><a href="/pmb">PMB</a></li>
             </ul>
 
@@ -57,7 +57,7 @@
                         </ul>
                     </li>
                     <li><a href="/student-activity">Student Activity</a></li>
-                    <li><a href="/survey">Survey</a></li>
+                    <li><a href="/survei">Survei</a></li>
                     <li><a href="/pmb">PMB</a></li>
                 </ul>
             </nav>

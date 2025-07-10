@@ -1,10 +1,9 @@
 <section class="container my-5 py-5">
-    <h1 class="section-title text-center">Pimpinan Fakultas</h1>
+    <h1 class="section-title text-center fade-in-from-top is-hidden">Pimpinan Fakultas</h1>
 
     <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
-        <!-- Pimpinan 1: Dekan -->
         <div class="col">
-            <div class="card h-100 shadow border-0 rounded-lg text-center">
+            <div class="card h-100 shadow border-0 rounded-lg text-center fade-in-from-top is-hidden">
                 <div class="card-body d-flex flex-column align-items-center">
                     <img
                         src="<?= base_url('pimpinan/dekan.png') ?>"
@@ -18,9 +17,8 @@
             </div>
         </div>
 
-        <!-- Pimpinan 2: Wakil Dekan 1 -->
         <div class="col">
-            <div class="card h-100 shadow border-0 rounded-lg text-center">
+            <div class="card h-100 shadow border-0 rounded-lg text-center fade-in-from-top is-hidden">
                 <div class="card-body d-flex flex-column align-items-center">
                     <img
                         src="<?= base_url('pimpinan/wd1.png') ?>"
@@ -34,9 +32,8 @@
             </div>
         </div>
 
-        <!-- Pimpinan 3: Wakil Dekan 2 -->
         <div class="col">
-            <div class="card h-100 shadow border-0 rounded-lg text-center">
+            <div class="card h-100 shadow border-0 rounded-lg text-center fade-in-from-top is-hidden">
                 <div class="card-body d-flex flex-column align-items-center">
                     <img
                         src="<?= base_url('pimpinan/wd2.png') ?>"
@@ -50,9 +47,8 @@
             </div>
         </div>
 
-        <!-- Pimpinan 4: Wakil Dekan 3 -->
         <div class="col">
-            <div class="card h-100 shadow border-0 rounded-lg text-center">
+            <div class="card h-100 shadow border-0 rounded-lg text-center fade-in-from-top is-hidden">
                 <div class="card-body d-flex flex-column align-items-center">
                     <img
                         src="<?= base_url('pimpinan/wd3.png') ?>"
@@ -67,3 +63,88 @@
         </div>
     </div>
 </section>
+
+<?= $this->section('style') ?>
+<style>
+    /* Base fade-in styles (reused from previous sections) */
+    .fade-in-from-top,
+    .fade-in-from-left,
+    /* Keep these if you use them elsewhere */
+    .fade-in-from-right {
+        /* Keep these if you use them elsewhere */
+        opacity: 0;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    /* Initial hidden state for fade-in-from-top */
+    .fade-in-from-top.is-hidden {
+        transform: translateY(-30px);
+    }
+
+    /* Visible state for all fade-in animations */
+    .fade-in-from-top.is-visible,
+    .fade-in-from-left.is-visible,
+    .fade-in-from-right.is-visible {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    /* Staggered animation delays for cards */
+    /* Adjust these values to control the sequence and speed of appearance */
+    .section-title.fade-in-from-top {
+        transition-delay: 0.1s;
+        /* Title appears first */
+    }
+
+    /* Target each card specifically if you want different delays for each */
+    .col:nth-child(1) .card.fade-in-from-top {
+        transition-delay: 0.3s;
+    }
+
+    .col:nth-child(2) .card.fade-in-from-top {
+        transition-delay: 0.3s;
+    }
+
+    .col:nth-child(3) .card.fade-in-from-top {
+        transition-delay: 0.3s;
+    }
+
+    .col:nth-child(4) .card.fade-in-from-top {
+        transition-delay: 0.3s;
+    }
+</style>
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all elements that need fade-in animation within this section
+        // We are targeting the title and all card elements.
+        const animatedElements = document.querySelectorAll(
+            '#pimpinan-fakultas .fade-in-from-top, ' + /* If you add an ID to the section */
+            '.section-title.fade-in-from-top, ' +
+            '.card.fade-in-from-top'
+        );
+
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const elementObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    entry.target.classList.remove('is-hidden');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        animatedElements.forEach(element => {
+            elementObserver.observe(element);
+        });
+    });
+</script>
+<?= $this->endSection() ?>

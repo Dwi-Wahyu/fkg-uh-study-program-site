@@ -25,13 +25,11 @@ class ProfilLulusanModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // Aturan validasi (opsional, tapi sangat direkomendasikan)
-    // Hapus 'uploaded[gambar]' dari sini karena sudah ditangani di Controller.
-    // Aturan ini hanya berlaku jika file *benar-benar* diunggah.
+
     protected $validationRules = [
-        'gambar'    => 'max_size[gambar,20480]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png,image/gif,image/webp]',
+        'gambar'    => 'required|max_length[255]',
         'judul'     => 'max_length[255]',
-        'deskripsi' => 'permit_empty', // Deskripsi bisa kosong
+        'deskripsi' => 'permit_empty',
     ];
 
     protected $validationMessages = [

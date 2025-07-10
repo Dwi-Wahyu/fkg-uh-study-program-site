@@ -180,6 +180,9 @@
             text-overflow: ellipsis;
         }
     </style>
+
+    <?= $this->renderSection('style') ?>
+
 </head>
 
 <body style="background: #f3f5f4;">
@@ -194,6 +197,8 @@
 
 
     <?= $this->renderSection('content') ?>
+
+    <script src="/assets/js/topbar.js"></script>
 
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 </body>

@@ -21,7 +21,7 @@ class ProfilLulusan extends BaseController
     public function index()
     {
         $data = [
-            'title'          => 'Daftar Profil Lulusan',
+            'title'          => 'Infografis Profil Lulusan',
             'profilLulusan'  => $this->profilLulusanModel->findAll(), // Ambil semua data profil lulusan
             'errors'         => session()->getFlashdata('errors'),
             'success'        => session()->getFlashdata('success'),
@@ -35,7 +35,7 @@ class ProfilLulusan extends BaseController
     public function create()
     {
         $data = [
-            'title'    => 'Tambah Profil Lulusan',
+            'title'    => 'Tambah Infografis',
             'errors'   => session()->getFlashdata('errors'),
             'success'  => session()->getFlashdata('success'),
         ];
@@ -49,7 +49,7 @@ class ProfilLulusan extends BaseController
     {
         // Aturan Validasi
         $rules = [
-            'gambar'    => [
+            'gambar' => [
                 'rules'  => 'uploaded[gambar]|max_size[gambar,20480]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png,image/gif,image/webp]',
                 'errors' => [
                     'uploaded' => 'Anda harus memilih gambar untuk diunggah.',
@@ -119,101 +119,6 @@ class ProfilLulusan extends BaseController
             $errors = $this->profilLulusanModel->errors();
             log_message('error', 'Gagal menyimpan Profil Lulusan ke database: ' . json_encode($errors));
             return redirect()->back()->withInput()->with('errors', $errors ?: ['Terjadi kesalahan saat menyimpan data.']);
-        }
-    }
-
-    /**
-     * Menampilkan form untuk mengedit Profil Lulusan yang sudah ada.
-     */
-    public function edit($id = null)
-    {
-        $profil = $this->profilLulusanModel->find($id);
-
-        if (!$profil) {
-            return redirect()->to('/admin/profil-lulusan')->with('errors', ['Profil Lulusan tidak ditemukan.']);
-        }
-
-        $data = [
-            'title'  => 'Edit Profil Lulusan',
-            'profil' => $profil,
-            'errors' => session()->getFlashdata('errors'),
-            'success' => session()->getFlashdata('success'),
-        ];
-        return view('admin/profil-lulusan/edit', $data);
-    }
-
-    /**
-     * Memperbarui data Profil Lulusan di database.
-     */
-    public function update($id = null)
-    {
-        $profil = $this->profilLulusanModel->find($id);
-
-        if (!$profil) {
-            return redirect()->to('/admin/profil-lulusan')->with('errors', ['Profil Lulusan tidak ditemukan.']);
-        }
-
-        // Aturan Validasi untuk Update (gambar tidak harus diupload ulang)
-        $rules = [
-            'judul'     => [
-                'rules'  => 'permit_empty|max_length[255]',
-                'errors' => [
-                    'max_length' => 'Judul terlalu panjang (maksimal 255 karakter).'
-                ]
-            ],
-            'deskripsi' => 'permit_empty',
-            'gambar'    => [
-                // Jika gambar baru diupload, validasi seperti biasa
-                'rules'  => 'if_exist|max_size[gambar,20480]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png,image/gif,image/webp]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar terlalu besar (maksimal 20MB).',
-                    'is_image' => 'File yang diunggah bukan gambar yang valid.',
-                    'mime_in'  => 'Tipe gambar tidak diizinkan. Hanya JPG, JPEG, PNG, GIF, WEBP yang diizinkan.'
-                ]
-            ],
-        ];
-
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
-
-        $dataToUpdate = [
-            'judul'     => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-        ];
-
-        $gambar = $this->request->getFile('gambar');
-
-        // Jika ada gambar baru diupload
-        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
-            // Hapus gambar lama jika ada
-            $oldGambarPath = ROOTPATH . 'public/uploads/profil_lulusan/' . $profil['gambar'];
-            if (file_exists($oldGambarPath)) {
-                unlink($oldGambarPath);
-            }
-
-            // Unggah gambar baru
-            $newGambarName = $gambar->getRandomName();
-            $uploadPath    = ROOTPATH . 'public/uploads/profil_lulusan/';
-
-            if (!is_dir($uploadPath)) {
-                mkdir($uploadPath, 0777, true);
-            }
-
-            if (!$gambar->move($uploadPath, $newGambarName)) {
-                log_message('error', 'Gagal mengunggah gambar baru saat update: ' . $gambar->getErrorString() . ' (' . $gambar->getError() . ')');
-                return redirect()->back()->withInput()->with('errors', ['gambar' => 'Gagal mengunggah gambar baru.']);
-            }
-            $dataToUpdate['gambar'] = $newGambarName; // Update nama gambar di database
-        }
-
-        // Coba update data dan periksa hasilnya
-        if ($this->profilLulusanModel->update($id, $dataToUpdate)) {
-            return redirect()->to('/admin/profil-lulusan')->with('success', 'Profil Lulusan berhasil diperbarui!');
-        } else {
-            $errors = $this->profilLulusanModel->errors();
-            log_message('error', 'Gagal memperbarui Profil Lulusan ke database: ' . json_encode($errors));
-            return redirect()->back()->withInput()->with('errors', $errors ?: ['Terjadi kesalahan saat memperbarui data.']);
         }
     }
 

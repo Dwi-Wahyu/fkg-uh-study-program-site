@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
+
+    <?= $this->renderSection('style') ?>
 </head>
 
 <body>
@@ -24,6 +26,9 @@
     </div>
 
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
+    <?= $this->renderSection('script') ?>
+
     <script src="/assets/js/topbar.js"></script>
 </body>
 
