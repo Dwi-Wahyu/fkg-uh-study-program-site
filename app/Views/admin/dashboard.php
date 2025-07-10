@@ -11,55 +11,55 @@
         </div>
 
         <div class="row mb-4">
-            <!-- Info Card: Total Pengunjung -->
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                <div class="card card-custom-dashboard bg-gradient-primary">
+            <!-- Info Card: Pengunjung Hari Ini -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card card-custom-dashboard bg-gradient-purple">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="card-icon-custom bg-white text-primary">
-                                <i class="fas fa-users"></i>
+                            <div class="text-white">
+                                <h6 class="mb-1">Pengunjung Hari Ini</h6>
+                                <h2 class="mb-0"><?= number_format($pengunjungHariIni) ?></h2>
                             </div>
-                            <div class="ms-4 text-white">
-                                <h5 class="mb-1">Total Pengunjung</h5>
-                                <h2 class="mb-0"><?= number_format($totalVisitors) ?></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Card: Pengunjung Bulan Ini -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="card card-custom-dashboard bg-gradient-orange">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="text-white">
+                                <h6 class="mb-1">Pengunjung Bulan Ini</h6>
+                                <h2 class="mb-0"><?= number_format($pengunjungBulanIni) ?></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Info Card: Total Berita -->
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-custom-dashboard bg-gradient-info">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="card-icon-custom bg-white text-info">
-                                <i class="far fa-newspaper"></i>
-                            </div>
-                            <div class="ms-4 text-white">
-                                <h5 class="mb-1">Total Berita</h5>
-                                <h2 class="mb-0"><?= $totalBerita ?></h2>
-                                <p class="mb-0 text-small">
-                                    <span class="text-white-50"><?= $newBerita ?></span> baru 30 hari terakhir
-                                </p>
+
+                            <div class="text-white">
+                                <h6 class="mb-1">Total Berita</h6>
+                                <h2 class="mb-0"><?= number_format($totalBerita) ?></h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Info Card: Total Aktivitas Mahasiswa -->
-            <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+            <!-- Info Card: Total Aktivitas Residen -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-custom-dashboard bg-gradient-success">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <div class="card-icon-custom bg-white text-success">
-                                <i class="fas fa-running"></i>
-                            </div>
-                            <div class="ms-4 text-white">
-                                <h6 class="mb-1">Total Aktivitas Mahasiswa</h6>
-                                <h2 class="mb-0"><?= $totalStudentActivity ?></h2>
-                                <p class="mb-0 text-small">
-                                    <span class="text-white-50"><?= $newStudentActivity ?></span> baru 30 hari terakhir
-                                </p>
+
+                            <div class="text-white">
+                                <h6 class="mb-1">Total Aktivitas Residen</h6>
+                                <h2 class="mb-0"><?= number_format($totalStudentActivity) ?></h2>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Ringkasan Konten Utama</h5>
+                        <h6 class="card-title mb-4">Ringkasan Konten Utama</h6>
                         <div style="height: 300px;">
                             <canvas id="mainContentChart"></canvas>
                         </div>
@@ -83,7 +83,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Aktivitas Baru (30 Hari Terakhir)</h5>
+                        <h6 class="card-title mb-4">Aktivitas Baru (30 Hari Terakhir)</h6>
                         <div style="height: 300px;">
                             <canvas id="recentActivityTrendChart"></canvas>
                         </div>
@@ -97,7 +97,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title mb-2">Berita Terbaru</h5>
+                        <h6 class="card-title mb-2">Berita Terbaru</h6>
                         <?php if (!empty($recentBerita)) : ?>
                             <ul class="list-unstyled list-unstyled-border">
                                 <?php foreach ($recentBerita as $berita) : ?>
@@ -124,7 +124,7 @@
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title mb-2">Aktivitas Mahasiswa Terbaru</h5>
+                        <h6 class="card-title mb-2">Aktivitas Mahasiswa Terbaru</h6>
                         <?php if (!empty($recentStudentActivity)) : ?>
                             <ul class="list-unstyled list-unstyled-border">
                                 <?php foreach ($recentStudentActivity as $activity) : ?>
@@ -138,7 +138,7 @@
                                 <?php endforeach; ?>
                             </ul>
                         <?php else : ?>
-                            <p class="text-center text-muted">Tidak ada aktivitas mahasiswa terbaru.</p>
+                            <p class="text-center text-muted">Tidak ada aktivitas residen terbaru.</p>
                         <?php endif; ?>
                         <div class="text-center mt-3">
                             <a href="<?= base_url('admin/student-activity') ?>" class="btn btn-outline-primary btn-sm">Lihat Semua Aktivitas</a>
@@ -166,7 +166,8 @@
                 datasets: [{
                     label: 'Jumlah Total',
                     data: [
-                        <?= $totalVisitors ?>,
+                        // Menggunakan data pengunjung dari controller
+                        <?= $pengunjungHariIni + $pengunjungBulanIni ?>, // Contoh total pengunjung (bisa disesuaikan)
                         <?= $totalBerita ?>,
                         <?= $totalStudentActivity ?>
                     ],
@@ -210,7 +211,7 @@
         new Chart(recentActivityTrendChartCtx, {
             type: 'bar', // Menggunakan bar chart untuk kesederhanaan
             data: {
-                labels: ['Berita Baru', 'Aktivitas Mahasiswa Baru'],
+                labels: ['Berita Baru', 'Aktivitas Residen Baru'],
                 datasets: [{
                     label: 'Jumlah Baru',
                     data: [
@@ -270,14 +271,14 @@
     }
 
     .card-custom-dashboard .card-body {
-        padding: 25px;
+        padding-left: 25px;
+        padding-right: 20px;
         display: flex;
         align-items: center;
     }
 
     .card-icon-custom {
         width: 70px;
-        height: 70px;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -298,6 +299,26 @@
     .bg-gradient-success {
         background: linear-gradient(45deg, #00b09b 0%, #96c93d 100%);
     }
+
+    /* Tambahan untuk Pengunjung Hari Ini dan Bulan Ini */
+    .bg-gradient-purple {
+        background: linear-gradient(45deg, #8A2BE2 0%, #9370DB 100%);
+        /* Ungu */
+    }
+
+    .text-purple {
+        color: #8A2BE2;
+    }
+
+    .bg-gradient-orange {
+        background: linear-gradient(45deg, #FF8C00 0%, #FFA500 100%);
+        /* Oranye */
+    }
+
+    .text-orange {
+        color: #FF8C00;
+    }
+
 
     .text-small {
         font-size: 0.85em;

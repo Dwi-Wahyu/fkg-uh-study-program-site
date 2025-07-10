@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class StudentActivityModel extends Model
+class ResidentActivityModel extends Model
 {
-    protected $table            = 'student_activity';
+    protected $table            = 'resident_activity';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

@@ -108,7 +108,7 @@
                 <button
                     type="submit"
                     class="btn btn-primary">
-                    Simpan Aktivitas
+                    Simpan
                 </button>
             </div>
         </form>

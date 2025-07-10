@@ -10,7 +10,7 @@
                 <li><a href="/graduate-profile">Profil Lulusan</a></li>
                 <li><a href="/student-guide">Student Guide</a></li>
                 <li><a href="/sarana-dan-prasarana">Sarana dan Prasarana</a></li>
-                <li><a href="/resident-activity">Resident Activity</a></li>
+                <li><a href="/aktivitas-residen">Resident Activity</a></li>
                 <li><a href="/survei">Survei</a></li>
                 <li><a href="https://regpmb.unhas.ac.id/" target="_blank">PMB</a></li>
             </ul>
@@ -56,7 +56,7 @@
                             <li><a href="/sarana-dan-prasarana">Sarana dan Prasarana</a></li>
                         </ul>
                     </li>
-                    <li><a href="/student-activity">Student Activity</a></li>
+                    <li><a href="/aktivitas-residen">Resident Activity</a></li>
                     <li><a href="/survei">Survei</a></li>
                     <li><a href="https://regpmb.unhas.ac.id/" target="_blank">PMB</a></li>
                 </ul>

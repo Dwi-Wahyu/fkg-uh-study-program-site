@@ -4,51 +4,60 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\BeritaModel;
-use App\Models\StudentActivityModel; // Tambahkan ini
+use App\Models\ResidentActivityModel;
+use App\Models\PengunjungModel; // Pastikan PengunjungModel sudah di-import
 
 class Dashboard extends BaseController
 {
     protected $beritaModel;
-    protected $studentActivityModel; // Tambahkan ini
+    protected $residentActivityModel;
+    protected $pengunjungModel; // Properti untuk PengunjungModel
 
     public function __construct()
     {
         $this->beritaModel = new BeritaModel();
-        $this->studentActivityModel = new StudentActivityModel(); // Inisialisasi model
+        $this->residentActivityModel = new ResidentActivityModel();
+        $this->pengunjungModel = new PengunjungModel(); // Inisialisasi PengunjungModel
 
-        helper('text'); // Pastikan text helper dimuat untuk character_limiter
+        helper('text');
     }
 
     public function index()
     {
-        // Data hardcode untuk total pengunjung
-        $totalVisitors = 1500; // Contoh: Angka pengunjung hardcode
+        // Ambil data pengunjung hari ini
+        $today = date('Y-m-d');
+        $pengunjungHariIniData = $this->pengunjungModel->where('tanggal_kunjungan', $today)->first();
+        $pengunjungHariIni = $pengunjungHariIniData['jumlah_pengunjung'] ?? 0;
+
+        // Ambil data pengunjung bulan ini
+        $pengunjungBulanIni = $this->pengunjungModel->getMonthlyVisitors(); // Menggunakan metode dari PengunjungModel
 
         // Ambil jumlah total data dari model yang relevan
         $totalBerita = $this->beritaModel->countAllResults();
-        $totalStudentActivity = $this->studentActivityModel->countAllResults();
+        $totalStudentActivity = $this->residentActivityModel->countAllResults();
 
         // Data untuk metrik baru (misalnya, 30 hari terakhir)
         $thirtyDaysAgo = date('Y-m-d H:i:s', strtotime('-30 days'));
 
         $newBerita = $this->beritaModel->where('created_at >=', $thirtyDaysAgo)->countAllResults();
-        $newStudentActivity = $this->studentActivityModel->where('created_at >=', $thirtyDaysAgo)->countAllResults();
+        $newStudentActivity = $this->residentActivityModel->where('created_at >=', $thirtyDaysAgo)->countAllResults();
 
         // Data untuk aktivitas terbaru (misalnya, 5 item terbaru dari setiap kategori)
         $recentBerita = $this->beritaModel->orderBy('created_at', 'DESC')->findAll(5);
-        $recentStudentActivity = $this->studentActivityModel->orderBy('created_at', 'DESC')->findAll(5);
+        $recentStudentActivity = $this->residentActivityModel->orderBy('created_at', 'DESC')->findAll(5);
 
         $data = [
             'title'                => 'Dashboard Admin',
-            'totalVisitors'        => $totalVisitors, // Teruskan ke view
+            'pengunjungHariIni'    => $pengunjungHariIni, // Data pengunjung hari ini
+            'pengunjungBulanIni'   => $pengunjungBulanIni, // Data pengunjung bulan ini
             'totalBerita'          => $totalBerita,
-            'totalStudentActivity' => $totalStudentActivity, // Teruskan ke view
+            'totalStudentActivity' => $totalStudentActivity,
 
             'newBerita'            => $newBerita,
-            'newStudentActivity'   => $newStudentActivity, // Teruskan ke view
+            'newStudentActivity'   => $newStudentActivity,
 
             'recentBerita'         => $recentBerita,
-            'recentStudentActivity' => $recentStudentActivity, // Teruskan ke view
+            'recentStudentActivity' => $recentStudentActivity,
         ];
 
         return view('admin/dashboard', $data);

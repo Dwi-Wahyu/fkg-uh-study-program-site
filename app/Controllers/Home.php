@@ -10,6 +10,8 @@ use App\Models\ProfilLulusanModel;
 use App\Models\SaranaPrasaranaModel;
 use App\Models\KurikulumModel;
 use App\Models\SurveiModel;
+use App\Models\ResidentActivityModel;
+use App\Models\PengunjungModel;
 
 class Home extends BaseController
 {
@@ -21,6 +23,8 @@ class Home extends BaseController
     protected $saranaPrasaranaModel;
     protected $kurikulumModel;
     protected $surveiModel;
+    protected $residentActivityModel;
+    protected $pengunjungModel;
 
     public function __construct()
     {
@@ -32,6 +36,8 @@ class Home extends BaseController
         $this->saranaPrasaranaModel = new SaranaPrasaranaModel();
         $this->kurikulumModel = new KurikulumModel();
         $this->surveiModel = new SurveiModel();
+        $this->residentActivityModel = new ResidentActivityModel();
+        $this->pengunjungModel = new PengunjungModel();
 
         helper('text');
     }
@@ -45,6 +51,8 @@ class Home extends BaseController
 
     public function index(): string
     {
+        $this->pengunjungModel->recordVisitor();
+
         $locale = $this->request->getLocale();
 
         $ketuaProdiData = $this->ketuaProdiModel->first();
@@ -142,9 +150,9 @@ class Home extends BaseController
 
     public function resident_activity()
     {
-        $locale = $this->request->getLocale();
-        $data['title'] = ($locale === 'en') ? 'Resident Activity' : 'Aktivitas Residen';
-        $data['currentLocale'] = $locale;
+        $data = [
+            'activities'       => $this->residentActivityModel->findAll(), // Ambil semua data aktivitas
+        ];
         return view('resident-activity', $data);
     }
 

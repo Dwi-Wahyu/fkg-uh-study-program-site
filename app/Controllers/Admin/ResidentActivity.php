@@ -3,15 +3,15 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\StudentActivityModel; // Pastikan model sudah di-import
+use App\Models\ResidentActivityModel; // Pastikan model sudah di-import
 
-class StudentActivity extends BaseController
+class ResidentActivity extends BaseController
 {
-    protected $studentActivityModel;
+    protected $residentActivityModel;
 
     public function __construct()
     {
-        $this->studentActivityModel = new StudentActivityModel();
+        $this->residentActivityModel = new ResidentActivityModel();
         helper('text');
         helper('form');
     }
@@ -20,7 +20,7 @@ class StudentActivity extends BaseController
     {
         $data = [
             'title'            => 'Daftar Resident Activity',
-            'activities'       => $this->studentActivityModel->findAll(), // Ambil semua data aktivitas
+            'activities'       => $this->residentActivityModel->findAll(), // Ambil semua data aktivitas
             'errors'           => session()->getFlashdata('errors'),
             'success'          => session()->getFlashdata('success'),
         ];
@@ -113,14 +113,14 @@ class StudentActivity extends BaseController
             'tanggal'   => $tanggal,
         ];
 
-        $this->studentActivityModel->save($dataToSave);
+        $this->residentActivityModel->save($dataToSave);
 
         return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil ditambahkan!');
     }
 
     public function edit($id = null)
     {
-        $activity = $this->studentActivityModel->find($id);
+        $activity = $this->residentActivityModel->find($id);
 
         if (!$activity) {
             return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
@@ -137,7 +137,7 @@ class StudentActivity extends BaseController
 
     public function update($id = null)
     {
-        $activity = $this->studentActivityModel->find($id);
+        $activity = $this->residentActivityModel->find($id);
 
         if (!$activity) {
             return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
@@ -206,14 +206,14 @@ class StudentActivity extends BaseController
             $dataToUpdate['gambar'] = $newGambarName; // Update nama gambar di database
         }
 
-        $this->studentActivityModel->update($id, $dataToUpdate);
+        $this->residentActivityModel->update($id, $dataToUpdate);
 
         return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil diperbarui!');
     }
 
     public function delete($id = null)
     {
-        $activity = $this->studentActivityModel->find($id);
+        $activity = $this->residentActivityModel->find($id);
 
         if (!$activity) {
             return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
@@ -228,7 +228,7 @@ class StudentActivity extends BaseController
         }
 
         // Hapus data dari database (akan menggunakan soft delete jika dikonfigurasi di model)
-        $this->studentActivityModel->delete($id);
+        $this->residentActivityModel->delete($id);
 
         return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil dihapus.');
     }
