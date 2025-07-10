@@ -7,7 +7,7 @@
         name=""
         id=""
         class="btn btn-primary btn-sm me-2"
-        href="/profil-lulusan"
+        href="/graduate-profile"
         role="button">
         <svg xmlns="http://www.w3.org/2000/svg" class="me-1" width="16" height="16" viewBox="0 0 16 16">
             <rect width="16" height="16" fill="none" />
