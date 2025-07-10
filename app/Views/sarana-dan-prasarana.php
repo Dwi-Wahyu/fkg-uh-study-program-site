@@ -112,7 +112,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div class="main-news-card p-4">
-                <h4 class="mb-3">Sarana dan Prasarana</h4>
+                <h4 class="section-title text-center">Sarana dan Prasarana</h4>
 
                 <?php if (!empty($saranaPrasarana)): ?>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

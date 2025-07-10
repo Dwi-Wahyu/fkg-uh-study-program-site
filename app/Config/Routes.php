@@ -15,8 +15,9 @@ $routes->GET('sejarah', 'Home::sejarah');
 $routes->GET('student-guide', 'Home::student_guide');
 $routes->GET('sarana-dan-prasarana', 'Home::sarana_dan_prasarana');
 $routes->GET('survei', 'Home::survei');
-$routes->GET('kurikulum', 'Home::kurikulum');
-$routes->GET('profil-lulusan', 'Home::profil_lulusan');
+$routes->GET('graduate-profile', 'Home::profil_lulusan');
+$routes->GET('curriculum', 'Home::kurikulum');
+$routes->GET('resident-aktivitas', 'Home::resident_activity');
 
 $routes->GET('/login', 'Auth::login');
 $routes->POST('/login', 'Auth::login');
@@ -58,7 +59,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
         $routes->GET('delete/(:num)', 'Admin\ProfilLulusan::delete/$1');
     });
 
-    $routes->group('student-activity', function ($routes) {
+    $routes->group('resident-activity', function ($routes) {
         $routes->GET('/', 'Admin\StudentActivity::index');
         $routes->GET('create', 'Admin\StudentActivity::create');
         $routes->POST('store', 'Admin\StudentActivity::store');

@@ -1,15 +1,29 @@
 <?= $this->extend('layout/admin') ?>
 
 <?= $this->section('navigation') ?>
-<a
-    name=""
-    id=""
-    class="btn btn-primary"
-    href="/admin/student-activity/create"
-    role="button">
-    <i class="bi bi-plus"></i>
-    Input Student Activity
-</a>
+<div>
+    <a
+        name=""
+        id=""
+        class="btn btn-primary btn-sm me-2"
+        href="/resident-activity"
+        role="button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="me-1" width="16" height="16" viewBox="0 0 16 16">
+            <rect width="16" height="16" fill="none" />
+            <path fill="currentColor" fill-rule="evenodd" d="M3 1h11l1 1v5.3a3.2 3.2 0 0 0-1-.3V2H9v10.88L7.88 14H3l-1-1V2zm0 12h5V2H3zm10.379-4.998a2.5 2.5 0 0 0-1.19.348h-.03a2.51 2.51 0 0 0-.799 3.53L9 14.23l.71.71l2.35-2.36c.325.22.7.358 1.09.4a2.5 2.5 0 0 0 1.14-.13a2.5 2.5 0 0 0 1-.63a2.46 2.46 0 0 0 .58-1a2.6 2.6 0 0 0 .07-1.15a2.53 2.53 0 0 0-1.35-1.81a2.5 2.5 0 0 0-1.211-.258m.24 3.992a1.5 1.5 0 0 1-.979-.244a1.55 1.55 0 0 1-.56-.68a1.5 1.5 0 0 1-.08-.86a1.49 1.49 0 0 1 1.18-1.18a1.5 1.5 0 0 1 .86.08c.276.117.512.311.68.56a1.5 1.5 0 0 1-1.1 2.324z" clip-rule="evenodd" />
+        </svg>
+        Lihat Halaman Resident Activity
+    </a>
+
+    <a
+        href="/admin/resident-activity/create"
+        class="btn btn-success btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+        </svg>
+        Input Resident Activity
+    </a>
+</div>
 <?= $this->endSection() ?>
 
 
@@ -58,7 +72,7 @@
                                     $gambarExtension = pathinfo($activity['gambar'], PATHINFO_EXTENSION);
                                     ?>
                                     <?php if (!empty($activity['gambar']) && in_array(strtolower($gambarExtension), $imageExtensions)): ?>
-                                        <img src="<?= base_url('student-activity/' . $activity['gambar']) ?>" alt="<?= esc($activity['judul']) ?>" style="max-width: 80px; max-height: 80px; object-fit: contain;">
+                                        <img src="<?= base_url('resident-activity/' . $activity['gambar']) ?>" alt="<?= esc($activity['judul']) ?>" style="max-width: 80px; max-height: 80px; object-fit: contain;">
                                     <?php else: ?>
                                         <i class="far fa-image fa-2x text-secondary"></i>
                                     <?php endif; ?>
@@ -66,7 +80,7 @@
                                 <td><?= date('d M Y', strtotime($activity['tanggal'])) ?></td>
                                 <td><?= date('d M Y H:i', strtotime($activity['created_at'])) ?></td>
                                 <td>
-                                    <a href="/admin/student-activity/edit/<?= $activity['id'] ?>" class="btn btn-warning btn-sm text-white" title="Edit">
+                                    <a href="/admin/resident-activity/edit/<?= $activity['id'] ?>" class="btn btn-warning btn-sm text-white" title="Edit">
                                         <i class="bi bi-pencil"></i> Edit
                                     </a>
                                     <button
@@ -149,10 +163,8 @@
             const activityId = button.getAttribute('data-id'); // Ambil ID aktivitas
             const confirmDeleteButton = deleteConfirmationModal.querySelector('#confirmDeleteButton');
 
-            // Atur href tombol 'Hapus' di modal agar mengarah ke rute delete student-activity
-            confirmDeleteButton.href = '/admin/student-activity/delete/' + activityId;
+            confirmDeleteButton.href = '/admin/resident-activity/delete/' + activityId;
         });
-        // --- Akhir Fungsionalitas Modal Konfirmasi Hapus ---
     });
 </script>
 <?= $this->endSection() ?>

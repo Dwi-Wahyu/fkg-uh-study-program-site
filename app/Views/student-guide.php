@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="main-news-card">
-                <h4>Student Guide</h4>
+                <h4 class="section-title text-center">Student Guide</h4>
                 <hr>
                 <div class="pdf-container" style="position: relative; width: 100%; padding-bottom: 75%; height: 0; overflow: hidden;">
                     <iframe

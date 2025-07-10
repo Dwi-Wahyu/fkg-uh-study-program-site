@@ -86,7 +86,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="main-news-card">
-                <h4 class="mb-4"><?= esc($title) ?></h4>
+                <h4 class="section-title text-center"><?= esc($title) ?></h4>
 
                 <div class="news-detail-content">
                     <?php if (empty($surveis)): ?>

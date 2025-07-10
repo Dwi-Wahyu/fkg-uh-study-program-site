@@ -6,13 +6,13 @@
             <ul class="" style="margin-top: 15px;margin-bottom: 20px;">
                 <li><a href="/">Home</a></li>
                 <li><a href="/sejarah">Sejarah</a></li>
-                <li><a href="/kurikulum">Kurikulum</a></li>
-                <li><a href="/profil-lulusan">Profil Lulusan</a></li>
+                <li><a href="/curriculum">Kurikulum</a></li>
+                <li><a href="/graduate-profile">Profil Lulusan</a></li>
                 <li><a href="/student-guide">Student Guide</a></li>
                 <li><a href="/sarana-dan-prasarana">Sarana dan Prasarana</a></li>
-                <li><a href="/student-activity">Student Activity</a></li>
+                <li><a href="/resident-activity">Resident Activity</a></li>
                 <li><a href="/survei">Survei</a></li>
-                <li><a href="/pmb">PMB</a></li>
+                <li><a href="https://regpmb.unhas.ac.id/" target="_blank">PMB</a></li>
             </ul>
 
             <div id="sidebar-toggle-btn" style="display: flex; width: 100%; justify-content: center;">
@@ -50,15 +50,15 @@
                         <a href="#">Tentang Kami</a>
                         <ul class="dropdown-menu">
                             <li><a href="/sejarah">Sejarah</a></li>
-                            <li><a href="/kurikulum">Kurikulum</a></li>
-                            <li><a href="/profil-lulusan">Profil Lulusan</a></li>
+                            <li><a href="/curriculum">Kurikulum</a></li>
+                            <li><a href="/graduate-profile">Profil Lulusan</a></li>
                             <li><a href="/student-guide">Student Guide</a></li>
                             <li><a href="/sarana-dan-prasarana">Sarana dan Prasarana</a></li>
                         </ul>
                     </li>
                     <li><a href="/student-activity">Student Activity</a></li>
                     <li><a href="/survei">Survei</a></li>
-                    <li><a href="/pmb">PMB</a></li>
+                    <li><a href="https://regpmb.unhas.ac.id/" target="_blank">PMB</a></li>
                 </ul>
             </nav>
         </div>

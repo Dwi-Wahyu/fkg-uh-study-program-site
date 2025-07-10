@@ -95,7 +95,7 @@
                             <div class="col">
                                 <div class="profile-card">
                                     <?php if (!empty($profil['gambar'])): ?>
-                                        <img src="<?= base_url('uploads/profil_lulusan/' . $profil['gambar']) ?>" alt="<?= esc($profil['judul'] ?? 'Gambar Profil Lulusan') ?>">
+                                        <img src="<?= base_url('profil-lulusan/' . $profil['gambar']) ?>" alt="<?= esc($profil['judul'] ?? 'Gambar Profil Lulusan') ?>">
                                     <?php else: ?>
                                         <img src="https://via.placeholder.com/400x300?text=No+Image" alt="No Image">
                                     <?php endif; ?>

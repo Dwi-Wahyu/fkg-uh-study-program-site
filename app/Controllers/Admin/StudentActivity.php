@@ -19,22 +19,22 @@ class StudentActivity extends BaseController
     public function index()
     {
         $data = [
-            'title'            => 'Daftar Student Activity',
+            'title'            => 'Daftar Resident Activity',
             'activities'       => $this->studentActivityModel->findAll(), // Ambil semua data aktivitas
             'errors'           => session()->getFlashdata('errors'),
             'success'          => session()->getFlashdata('success'),
         ];
-        return view('admin/student-activity/index', $data);
+        return view('admin/resident-activity/index', $data);
     }
 
     public function create()
     {
         $data = [
-            'title'    => 'Tambah Student Activity',
+            'title'    => 'Tambah Resident Activity',
             'errors'   => session()->getFlashdata('errors'),
             'success'  => session()->getFlashdata('success'),
         ];
-        return view('admin/student-activity/create', $data);
+        return view('admin/resident-activity/create', $data);
     }
 
     public function store()
@@ -87,7 +87,7 @@ class StudentActivity extends BaseController
         $gambarName = null;
         if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
             $gambarName = $gambar->getRandomName(); // Nama unik untuk gambar
-            $uploadPath = ROOTPATH . 'public/student-activity/'; // Lokasi penyimpanan gambar
+            $uploadPath = ROOTPATH . 'public/resident-activity/'; // Lokasi penyimpanan gambar
 
             // Pastikan direktori ada
             if (!is_dir($uploadPath)) {
@@ -115,7 +115,7 @@ class StudentActivity extends BaseController
 
         $this->studentActivityModel->save($dataToSave);
 
-        return redirect()->to('/admin/student-activity')->with('success', 'Student Activity berhasil ditambahkan!');
+        return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil ditambahkan!');
     }
 
     public function edit($id = null)
@@ -123,16 +123,16 @@ class StudentActivity extends BaseController
         $activity = $this->studentActivityModel->find($id);
 
         if (!$activity) {
-            return redirect()->to('/admin/student-activity')->with('errors', ['Student Activity tidak ditemukan.']);
+            return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
         }
 
         $data = [
-            'title'    => 'Edit Student Activity',
+            'title'    => 'Edit Resident Activity',
             'activity' => $activity,
             'errors'   => session()->getFlashdata('errors'),
             'success'  => session()->getFlashdata('success'),
         ];
-        return view('admin/student-activity/edit', $data);
+        return view('admin/resident-activity/edit', $data);
     }
 
     public function update($id = null)
@@ -140,7 +140,7 @@ class StudentActivity extends BaseController
         $activity = $this->studentActivityModel->find($id);
 
         if (!$activity) {
-            return redirect()->to('/admin/student-activity')->with('errors', ['Student Activity tidak ditemukan.']);
+            return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
         }
 
         // Aturan Validasi untuk Update (gambar tidak harus diupload ulang)
@@ -187,14 +187,14 @@ class StudentActivity extends BaseController
         // Jika ada gambar baru diupload
         if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
             // Hapus gambar lama jika ada
-            $oldGambarPath = ROOTPATH . 'public/student-activity/' . $activity['gambar'];
+            $oldGambarPath = ROOTPATH . 'public/resident-activity/' . $activity['gambar'];
             if (file_exists($oldGambarPath)) {
                 unlink($oldGambarPath);
             }
 
             // Unggah gambar baru
             $newGambarName = $gambar->getRandomName();
-            $uploadPath    = ROOTPATH . 'public/student-activity/';
+            $uploadPath    = ROOTPATH . 'public/resident-activity/';
 
             if (!is_dir($uploadPath)) {
                 mkdir($uploadPath, 0777, true);
@@ -208,7 +208,7 @@ class StudentActivity extends BaseController
 
         $this->studentActivityModel->update($id, $dataToUpdate);
 
-        return redirect()->to('/admin/student-activity')->with('success', 'Student Activity berhasil diperbarui!');
+        return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil diperbarui!');
     }
 
     public function delete($id = null)
@@ -216,20 +216,20 @@ class StudentActivity extends BaseController
         $activity = $this->studentActivityModel->find($id);
 
         if (!$activity) {
-            return redirect()->to('/admin/student-activity')->with('errors', ['Student Activity tidak ditemukan.']);
+            return redirect()->to('/admin/resident-activity')->with('errors', ['Resident Activity tidak ditemukan.']);
         }
 
         // Hapus file gambar fisik dari server
-        $gambarPath = ROOTPATH . 'public/student-activity/' . $activity['gambar'];
+        $gambarPath = ROOTPATH . 'public/resident-activity/' . $activity['gambar'];
         if (file_exists($gambarPath)) {
             unlink($gambarPath);
         } else {
-            log_message('warning', 'Gambar Student Activity tidak ditemukan di server: ' . $gambarPath . ' untuk ID: ' . $id);
+            log_message('warning', 'Gambar Resident Activity tidak ditemukan di server: ' . $gambarPath . ' untuk ID: ' . $id);
         }
 
         // Hapus data dari database (akan menggunakan soft delete jika dikonfigurasi di model)
         $this->studentActivityModel->delete($id);
 
-        return redirect()->to('/admin/student-activity')->with('success', 'Student Activity berhasil dihapus.');
+        return redirect()->to('/admin/resident-activity')->with('success', 'Resident Activity berhasil dihapus.');
     }
 }

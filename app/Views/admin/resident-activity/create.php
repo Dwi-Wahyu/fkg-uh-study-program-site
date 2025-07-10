@@ -3,6 +3,7 @@
 <?= $this->section('content') ?>
 
 <div class="card">
+
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -22,7 +23,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="post" action="/admin/student-activity/update/<?= $activity['id'] ?>" enctype="multipart/form-data">
+        <form method="post" action="/admin/resident-activity/store" enctype="multipart/form-data">
             <?= csrf_field() ?>
 
             <div class="mb-3">
@@ -33,7 +34,7 @@
                     name="judul"
                     id="judul"
                     placeholder="Masukkan judul aktivitas"
-                    value="<?= old('judul', $activity['judul']) ?>" />
+                    value="<?= old('judul') ?>" />
                 <?php if (isset($errors['judul'])): ?>
                     <div class="invalid-feedback">
                         <?= $errors['judul'] ?>
@@ -48,7 +49,7 @@
                     name="deskripsi"
                     id="deskripsi"
                     rows="5"
-                    placeholder="Masukkan deskripsi lengkap aktivitas"><?= old('deskripsi', $activity['deskripsi']) ?></textarea>
+                    placeholder="Masukkan deskripsi lengkap aktivitas"><?= old('deskripsi') ?></textarea>
                 <?php if (isset($errors['deskripsi'])): ?>
                     <div class="invalid-feedback">
                         <?= $errors['deskripsi'] ?>
@@ -63,7 +64,7 @@
                     class="form-control <?= (isset($errors['tanggal'])) ? 'is-invalid' : '' ?>"
                     name="tanggal"
                     id="tanggal"
-                    value="<?= old('tanggal', $activity['tanggal']) ?>" />
+                    value="<?= old('tanggal') ?>" />
                 <?php if (isset($errors['tanggal'])): ?>
                     <div class="invalid-feedback">
                         <?= $errors['tanggal'] ?>
@@ -72,7 +73,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="gambar" class="form-label">Unggah Gambar (Biarkan kosong jika tidak ingin mengubah)</label>
+                <label for="gambar" class="form-label">Unggah Gambar</label>
                 <input
                     type="file"
                     class="form-control <?= (isset($errors['gambar'])) ? 'is-invalid' : '' ?>"
@@ -80,7 +81,7 @@
                     id="gambar"
                     aria-describedby="gambarHelpId"
                     accept="image/*" />
-                <div id="gambarHelpId" class="form-text text-muted">Pilih file gambar baru (JPG, JPEG, PNG, GIF, WEBP).</div>
+                <div id="gambarHelpId" class="form-text text-muted">Pilih file gambar (JPG, JPEG, PNG, GIF, WEBP).</div>
                 <?php if (isset($errors['gambar'])): ?>
                     <div class="invalid-feedback">
                         <?= $errors['gambar'] ?>
@@ -88,23 +89,18 @@
                 <?php endif; ?>
             </div>
 
-            <div class="mb-3" id="imagePreviewContainer" style="display: <?= !empty($activity['gambar']) ? 'block' : 'none' ?>;">
-                <label class="form-label">Pratinjau Gambar Saat Ini</label>
+            <div class="mb-3" id="imagePreviewContainer" style="display: none;">
+                <label class="form-label">Pratinjau Gambar</label>
                 <div class="border rounded p-2 text-center">
-                    <img id="imagePreview"
-                        src="<?= !empty($activity['gambar']) ? base_url('student-activity/' . $activity['gambar']) : '#' ?>"
-                        alt="Pratinjau Gambar"
-                        class="img-fluid"
-                        style="max-height: 200px; object-fit: contain;">
+                    <img id="imagePreview" src="#" alt="Pratinjau Gambar" class="img-fluid" style="max-height: 200px; object-fit: contain;">
                 </div>
             </div>
 
-            <hr>
 
             <div class="d-flex justify-content-end gap-2">
                 <a
                     class="btn btn-secondary"
-                    href="/admin/student-activity"
+                    href="/admin/resident-activity"
                     role="button">
                     Kembali
                 </a>
@@ -112,7 +108,7 @@
                 <button
                     type="submit"
                     class="btn btn-primary">
-                    Perbarui Aktivitas
+                    Simpan Aktivitas
                 </button>
             </div>
         </form>
@@ -134,20 +130,11 @@
                 previewContainer.style.display = 'block';
             } else {
                 previewContainer.style.display = 'none';
-                previewImage.src = '#'; // Reset src jika bukan gambar
-            }
-        } else {
-            // Jika file dihapus setelah dipilih, atau tidak ada file baru yang dipilih
-            // dan sebelumnya sudah ada gambar, tampilkan gambar lama
-            // Jika tidak ada gambar lama dan tidak ada file baru, sembunyikan
-            const currentImageUrl = "<?= !empty($activity['gambar']) ? base_url('student-activity/' . $activity['gambar']) : '#' ?>";
-            if (currentImageUrl !== '#') {
-                previewImage.src = currentImageUrl;
-                previewContainer.style.display = 'block';
-            } else {
-                previewContainer.style.display = 'none';
                 previewImage.src = '#';
             }
+        } else {
+            previewContainer.style.display = 'none';
+            previewImage.src = '#';
         }
     });
 </script>

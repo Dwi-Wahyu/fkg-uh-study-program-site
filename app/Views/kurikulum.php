@@ -136,9 +136,9 @@
             <div class="main-news-card p-4">
                 <h4 class="section-title text-center"><?= esc($title) ?></h4>
 
-                <?php if (!empty($kurikulum)): ?>
+                <?php if (!empty($data['kurikulum'])): ?>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <?php foreach ($kurikulum as $item): ?>
+                        <?php foreach ($data['kurikulum'] as $item): ?>
                             <div class="col">
                                 <div class="kurikulum-card" data-bs-toggle="modal" data-bs-target="#imageModal" data-image-src="<?= base_url('kurikulum/' . $item['gambar']) ?>" data-image-alt="<?= esc($item['keterangan'] ?? 'Gambar Kurikulum') ?>">
                                     <?php if (!empty($item['gambar'])): ?>

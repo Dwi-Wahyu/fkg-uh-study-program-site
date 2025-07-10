@@ -1,9 +1,8 @@
 <?= $this->extend('layout/landing-page') ?>
 
 <?= $this->section('content') ?>
-<?= view('partials/hero') ?>
 
-<?= view('partials/language-toggle') ?>
+<?= view('partials/hero') ?>
 
 <?= view('partials/sambutan-ketua-program-studi', ['ketuaProdi' => $ketuaProdi, 'currentLocale' => $currentLocale]) ?>
 
@@ -20,6 +19,5 @@
 <?= view('partials/layanan-mahasiswa') ?>
 
 <?= view('partials/footer') ?>
-
 
 <?= $this->endSection() ?>

@@ -125,7 +125,7 @@ class Home extends BaseController
         }
 
         $data = [
-            'kurikulum'       => $this->kurikulumModel->findAll(),
+            'kurikulum'       => $formattedKurikulum,
             'title'           => ($locale === 'en') ? 'Curriculum' : 'Kurikulum',
             'currentLocale'   => $locale,
         ];
@@ -138,6 +138,14 @@ class Home extends BaseController
         $data['title'] = ($locale === 'en') ? 'Student Guide' : 'Panduan Mahasiswa';
         $data['currentLocale'] = $locale;
         return view('student-guide', $data);
+    }
+
+    public function resident_activity()
+    {
+        $locale = $this->request->getLocale();
+        $data['title'] = ($locale === 'en') ? 'Resident Activity' : 'Aktivitas Residen';
+        $data['currentLocale'] = $locale;
+        return view('resident-activity', $data);
     }
 
     public function sarana_dan_prasarana()

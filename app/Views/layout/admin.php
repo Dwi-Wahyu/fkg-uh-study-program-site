@@ -25,7 +25,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    <link rel=" stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css') ?>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
     <link rel="stylesheet" href="<?= base_url('assets/css/admin.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/breadcrumb.css') ?>">
 </head>
@@ -168,8 +169,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/admin/student-activity" class="nav-link <?= $segment2 === 'student-activity' ? 'active' : '' ?>">
-                    <i class="bi bi-people me-2"></i> Student Activity
+                <a href="/admin/resident-activity" class="nav-link <?= $segment2 === 'resident-activity' ? 'active' : '' ?>">
+                    <i class="bi bi-people me-2"></i> Resident Activity
                     <div class="corner-right-top">
 
                     </div>
@@ -233,7 +234,7 @@
         <?= $this->renderSection('content') ?>
     </div>
 
-    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
     <?= $this->renderSection('javascript') ?>
 
