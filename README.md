@@ -1,4 +1,4 @@
-# Study Program Template Site
+## Study Program Template Site
 
 Powered By Faculty of Dentistry, Hasanuddin University.
 
