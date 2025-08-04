@@ -1,4 +1,6 @@
-# Fakultas Kedokteran Gigi Study Program Template Site
+# Study Program Template Site
+
+Powered By Faculty of Dentistry, Hasanuddin University.
 
 ### Site
 - https://maxillofacial.dent.unhas.ac.id/
